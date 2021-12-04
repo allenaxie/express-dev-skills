@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+// Assign each route file to variable
 var indexRouter = require('./routes/index');
 var skillsRouter = require('./routes/skills');
 
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Linking URL to file
 app.use('/', indexRouter);
 app.use('/skills', skillsRouter);
 

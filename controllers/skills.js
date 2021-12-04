@@ -1,12 +1,20 @@
-// Should name the model in uppercase and singular
+// Import data source from models
 const Skill = require('../models/skill');
-
+// Export each of your functions
 module.exports = {
-    index
+    index,
+    show,
 };
-
+// Render data to view files
 function index (req,res) {
+    let skills = Skill.getAll();
     res.render('skills/index', {
-        skills: Skill.getAll()
-    });
+        skills
+    })
 }
+function show (req,res) {
+    let skill = Skill.getOne(req.params.id);
+    res.render('skills/show',{ skill });
+}
+
+
